@@ -54,7 +54,8 @@ pipeline {
                                 node_modules/.bin/netlify --version
                                 echo "Deploying to Netlify..."
                                 node_modules/.bin/netlify status
-                                node_modules/.bin/netlify deploy --dir=build --prod --skip-build
+                                node_modules/.bin/netlify deploy '--dir=build' --prod
+
                             '''
                         }
                     }
