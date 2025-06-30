@@ -49,23 +49,16 @@ pipeline {
                             }
                         }
 
-//                         steps {
-//                             sh '''
-//                                 npm install netlify-cli
-//                                 node_modules/.bin/netlify --version
-//                                 echo "Deploying to Netlify..."
-//                                 node_modules/.bin/netlify status
-//                                 node_modules/.bin/netlify deploy '--dir=build' --prod
-//                             '''
-//                         }
-                           steps {
-                                   withCredentials([string(credentialsId: 'NETLIFY_AUTH_TOKEN', variable: 'NETLIFY_AUTH_TOKEN')]) {
-                                       sh '''
-                                           apk add --no-cache bash
-                                           npm install -g netlify-cli
-                                           netlify deploy --dir=build --prod
-                                       '''
-                                   }
+                        steps {
+                            sh '''
+                                apk add --no-cache bash
+                                npm install netlify-cli
+                                node_modules/.bin/netlify --version
+                                echo "Deploying to Netlify..."
+                                node_modules/.bin/netlify status
+                                node_modules/.bin/netlify deploy '--dir=build' --prod
+                            '''
+                        }
                     }
 
     }
